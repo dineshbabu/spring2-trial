@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:aop="http://www.springframework.org/schema/aop"   
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+    <bean id="duke" class="com.springinaction.springidol.DIConstructorObjectRef.PoeticJuggler">
+		<constructor-arg value="11" type="int"/>
+		<constructor-arg>
+				<bean class="com.springinaction.springidol.DIConstructorObjectRef.Sonnet29" />
+		</constructor-arg>
+	</bean>
+
+	<!-- AspectJ Annotated Advice -->
+	<bean id="audienceNonAround" class="com.springinaction.chapter04.aspectJAutoProxying.Audience" />
+	
+	<!-- AspectJ Annotated Around Advice -->
+	<!--<bean id="audienceAround" class="com.springinaction.chapter04.aspectJAutoProxying.AudienceAroundAdvice" />-->
+	
+	<!-- Enable AspectJauto proxying by adding just the following line-->
+	<aop:aspectj-autoproxy />
+	
+</beans>

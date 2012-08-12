@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="lib" path="C:/spring-framework-2.0.8/dist/spring.jar" sourcepath="C:/spring-framework-2.0.8/dist"/>
+	<classpathentry kind="lib" path="C:/apache-tomcat-6.0.33/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/spring-framework-2.0.8/apache_jars/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/spring-framework-2.0.8/apache_jars/struts-tiles-1.3.5.jar"/>
+	<classpathentry kind="lib" path="C:/spring-framework-2.0.8/spring_validation_module_jar/spring-modules-validation-0.5.jar"/>
+	<classpathentry kind="lib" path="C:/eclipseWorkspace/dmnet/lib/commons-logging-api.jar"/>
+	<classpathentry kind="lib" path="C:/spring-framework-2.0.8/cglib_jar/cglib-nodep-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/spring-framework-2.0.8/dist/spring-aspects.jar"/>
+	<classpathentry kind="lib" path="C:/spring-framework-2.0.8/aspectJ_jars/aspectjtools-1.5.4.jar"/>
+	<classpathentry kind="lib" path="C:/spring-framework-2.0.8/odbc_jars/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="C:/jars/struts/struts-core-1.3.5.jar"/>
+	<classpathentry kind="lib" path="C:/jars/quartz/quartz-1.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/jars/iText/itext-2.1.7.jar"/>
+	<classpathentry kind="lib" path="C:/jars/jakarta_poi/jakarta-poi-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/jars/JMS/javax.jms.jar"/>
+	<classpathentry kind="lib" path="C:/jars/j2EE_1.4/j2ee-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/hibernate-distribution-3.6.8.Final/lib/jpa/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="C:/hibernate-distribution-3.6.8.Final/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/jars/spring-annnotation/spring-modules-cache-0.8.jar"/>
+	<classpathentry kind="lib" path="C:/jars/acegi-security-1.0.6/acegi-security-1.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/jars/rome-0.9/rome-0.9.jar"/>
+	<classpathentry kind="lib" path="C:/jars/tapestry-3.0.2/tapestry-3.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dbabu/Downloads/tapestry-annotations-4.1.jar"/>
+	<classpathentry kind="lib" path="C:/jars/tapestry-annotations-4.1/tapestry-annotations-4.1.jar"/>
+	<classpathentry kind="lib" path="C:/jars/oro-2.0.7/oro-2.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/jars/log4j-1.2.14/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="C:/jars/xwork-1.1/xwork-1.1.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

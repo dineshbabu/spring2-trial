@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean id="dukeTarget" class="com.springinaction.springidol.DIConstructorObjectRef.PoeticJuggler">
+		<constructor-arg value="11" type="int"/>
+		<constructor-arg>
+				<bean class="com.springinaction.springidol.DIConstructorObjectRef.Sonnet29" />
+		</constructor-arg>		
+	</bean>
+
+	<bean id="audience" class="com.springinaction.chapter04.classicAspect.Audience" />
+	
+	<!-- Delcare advice bean-->
+	<!--<bean id="audienceAdvice" class="com.springinaction.chapter04.classicAspect.AudienceAdvice">
+		<property name="audience" ref="audience" />
+	</bean>-->
+	
+	<!-- Declare around advice bean. U can use this bean instead of the advice bean above -->
+	<bean id="audienceAdvice" class="com.springinaction.chapter04.classicAspect.AudienceAroundAdvice">
+		<property name="audience" ref="audience" />
+	</bean>
+	
+	<!-- declare Regular expression point cut -->
+	<bean id="performancePointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="pattern" value=".*perform" /> 
+	</bean>
+	
+	<!-- if u want to use AspectJ expression point cut, then declare AspectJ point cut ( advice is combiled with point cut here  )-->
+	<!--<bean id="performancePointcut" class="org.springframework.aop.aspectj.AspectJExpressionPointcut">
+		<property name="advice" ref="audienceAdvice" />
+		<property name="expression" value="execution(* Performer+.perform(..))" />
+	</bean>-->
+	
+	<!-- Associate pointcut with advice -->
+	<bean id="audienceAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="audienceAdvice" />
+		<property name="pointcut" ref="performancePointcut" />
+	</bean>
+
+	<!-- to combine advice and point cut use the below one -->
+	<!--<bean id="audienceAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice" ref="audienceAdvice" />
+		<property name="pattern" value=".*perform" />
+	</bean>-->
+	
+	<!-- Proxying the bean being adviced -->
+	<bean id="duke" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="dukeTarget" />
+		<property name="interceptorNames" value="audienceAdvisor" />
+		<property name="proxyInterfaces" value="com.springinaction.springidol.DIConstructorProperty.Performer" />
+	</bean>
+	
+	<!-- U can abstract the proxy bean so that it can be shared by other beans -->	
+	<!--<bean id="audienceProxyBase" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
+		<property name="proxyInterfaces" value="com.springinaction.springidol.DIConstructorProperty.Performer" />
+		<property name="interceptorNames" value="audienceAdvisor" />
+	</bean>
+	
+	<bean id="duke" parent="audienceProxyBase">
+		<property name="target" ref="dukeTarget" />
+	</bean>-->
+	
+	<!-- Auto proxying: Can get rid of "ProxyFactoryBean" creation above ( duke bean ) by using auto proxy. Remember to rename the bean "dukeTarget" to "duke" while using this oprion-->
+	<!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />-->
+	
+</beans>

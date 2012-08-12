@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+  
+  <bean id="guitar" class="com.springinaction.springidol.DICollection.Guitar"/>
+  <bean id="cymbal" class="com.springinaction.springidol.DICollection.Cymbal"/>
+  <bean id="harmonica" class="com.springinaction.springidol.DICollection.Harmonica"/>
+  <bean id="saxophone" class="com.springinaction.springidol.DICollection.Saxophone"/>
+  <bean id="hank" class="com.springinaction.springidol.DICollection.OneManBand">
+    <property name="instruments">
+	<!-- Using List, Set -->
+		<!--<list>
+			<ref bean="guitar" />
+			<ref bean="cymbal" />
+			<ref bean="harmonica" />
+			<ref bean="saxophone" />
+		</list>-->
+		<list>
+			<bean class="com.springinaction.springidol.DICollection.Guitar"/><!-- instead of ref, used inner bean -->
+			<ref bean="cymbal" />
+			<ref bean="harmonica" />
+			<ref bean="saxophone" />
+		</list>
+		
+		<!--<set>
+			<ref bean="guitar" />
+			<ref bean="cymbal" />
+			<ref bean="harmonica" />
+			<ref bean="harmonica" />
+		</set>-->
+	</property>
+	
+	<!-- Using Non object List -->
+	<property name="instrumentsNonObject">
+		<list>
+			<value>1 </value>
+			<value>2 </value>
+			<value>3 </value>
+			<null/>
+		</list>
+		
+	</property>
+	
+	<!-- Using Map -->
+	<property name="instrumentsMap">
+		<map>
+			<entry key="GUITAR_MAP" value-ref="guitar" />
+			<entry key="CYMBAL_MAP" value-ref="cymbal" />
+			<entry key="HARMONICA_MAP" value-ref="harmonica" />
+		</map>
+	</property>
+	
+	<!-- Using Properties -->
+	<property name="instrumentsProperties">
+    <props>
+      <prop key="GUITAR_PROPERTIES">STRUM STRUM STRUM</prop>
+      <prop key="CYMBAL_PROPERTIES">CRASH CRASH CRASH</prop>
+      <prop key="HARMONICA_PROPERTIES">HUM HUM HUM</prop>
+    </props>
+  </property>
+  
+  </bean>
+</beans>

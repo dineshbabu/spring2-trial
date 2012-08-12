@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- Register PhoneEditor as custom editor -->
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="com.springinaction.springidol.DICustomPropertyEditor.PhoneNumber">
+					<bean id="phoneEditor" class="com.springinaction.springidol.DICustomPropertyEditor.PhoneEditor">
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	
+	<bean id="contact" class="com.springinaction.springidol.DICustomPropertyEditor.Contact">
+		<property name="phoneNumber" value="888-555-1212" /> <!-- Phone Object property as string -->
+	</bean>
+</beans>
+
+

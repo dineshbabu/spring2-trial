@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+  
+  <bean id="greetingServiceParent" class="com.springinaction.chapter01.hello.GreetingService" abstract="true" >
+    <property name="greeting" value="Greetings from Parent" />
+  </bean>
+  
+  <bean id="ParentAbstractBean" abstract="true">
+  	<property name="propertyFromParentAbstractBean" value="propertyFromParentAbstractBean"></property>
+  </bean>
+  
+  <bean id="basicMethodReplacer" class="com.springinaction.notes3.advancedbeanwiring.MethodReplacerBean">
+  </bean>
+  
+  <!-- <bean id="greetingService" class="com.springinaction.notes3.advancedbeanwiring.GreetingServiceImpl" parent="greetingServiceParent">--><!-- bean parent --> 
+  <bean id="greetingService" class="com.springinaction.notes3.advancedbeanwiring.GreetingServiceImpl" parent="ParentAbstractBean"> <!-- non bean parent -->
+  	<replaced-method name="replaceThisMethodBasic" replacer="basicMethodReplacer"></replaced-method>
+   </bean>	
+</beans>

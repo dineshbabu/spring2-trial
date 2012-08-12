@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- Register bean postprocessor bean -->
+	<bean class="com.springinaction.chapter03.beanPostProcessor.Fuddifier"/>
+	
+	<bean id="bugs" class="com.springinaction.chapter03.beanPostProcessor.Rabbit">
+		<property name="description" value="That rascally rabbit!" /> <!-- The value of this property will be fuddified -->
+	</bean>
+	
+	<!-- Register Bean Factory post processor bean-->
+	<bean id="beanCounter" class="com.springinaction.chapter03.beanPostProcessor.BeanCounter"/>
+	
+</beans>
+
+

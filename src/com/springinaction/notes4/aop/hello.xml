@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"   
+xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+  
+ 	<bean id="greetingServiceImpl" class="com.springinaction.notes4.aop.GreetingServiceImpl"/>
+  	
+  	<!-- Start: classic AOP . NOT WORKING. NOTHING HAPPENS -->
+  	
+  	<!-- Declaring apsect bean -->
+  	<bean id="greetingServiceAspect" class="com.springinaction.notes4.aop.GreetingServiceAspect">
+  		<property name="greetingServiceImpl" ref="greetingServiceImpl"></property>  		
+  	</bean>
+  	
+  	<!-- Declaring point cuts -->
+  	<bean id="greetingPointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+  		<property name="pattern" value=".*sayGreeting" />
+	</bean>
+	
+	<!-- Declaring point cut advisor -->
+	<bean id="greetingAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+  		<property name="advice" ref="greetingServiceAspect"> </property>
+  		<property name="pointcut" ref="greetingPointcut" />
+	</bean>
+	
+	<!-- End: classic AOP . NOT WORKING -->
+	
+	<!-- <bean id="greetingServiceAspect" class="com.springinaction.notes4.aop.GreetingServiceAspect">
+  		<property name="advice" ref="greetingServiceAspect" />
+  		<property name="pattern" ref="*.sayGreeting" />
+	</bean>-->
+	
+	<!-- <aop:config>
+		<aop:aspect ref="greetingServiceAspect">
+		<aop:before pointcut="execution(*com.springinaction.notes4.aop.GreetingServiceImpl.sayGreeting(..))" method="beforeMethodInvocation" />
+		<aop:after-returning pointcut="execution(*com.springinaction.notes4.aop.GreetingServiceImpl.sayGreeting(..))" method="afterReturningFromMethod" />
+		<aop:after-throwing pointcut="execution(*com.springinaction.notes4.aop.GreetingServiceImpl.sayGreeting(..))" method="afterThrowingOutOfMethod" />
+		</aop:aspect>
+	</aop:config>-->
+   
+</beans>

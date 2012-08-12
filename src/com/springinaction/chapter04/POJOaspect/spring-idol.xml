@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+  <bean id="duke" class="com.springinaction.springidol.DIConstructorObjectRef.PoeticJuggler">
+	   <constructor-arg value="11" type="int"/>
+	   <constructor-arg>
+			<bean class="com.springinaction.springidol.DIConstructorObjectRef.Sonnet29" />
+	   </constructor-arg>		
+  </bean>
+  <bean id="audience"
+      class="com.springinaction.chapter04.POJOaspect.Audience" />
+  <aop:config>
+    <aop:aspect ref="audience">
+      <aop:before
+          method="takeSeats" 
+          pointcut="execution(* *.perform(..))" />
+      <aop:before
+          method="turnOffCellPhones"
+          pointcut="execution(* *.perform(..))" />
+      <aop:after-returning
+          method="applaud"
+          pointcut="execution(* *.perform(..))" />
+      <aop:after-throwing
+          method="demandRefund"
+          pointcut="execution(* *.perform(..))" />
+    </aop:aspect>
+    
+    <!-- Or you can define point-cut separately and refer it in other aop tags as below -->
+    <!--<aop:aspect ref="audience">
+		<aop:pointcut
+			id="performance"
+			expression="execution(* *.perform(..))" />
+		<aop:before
+			method="takeSeats"
+			pointcut-ref="performance" />
+		<aop:before
+			method="turnOffCellPhones"
+			pointcut-ref="performance" />
+		<aop:after-returning
+			method="applaud"
+			pointcut-ref="performance" />
+		<aop:after-throwing
+			method="demandRefund"
+			pointcut-ref="performance" />
+    </aop:aspect>-->
+	
+  </aop:config>
+</beans>

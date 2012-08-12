@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    <!-- declaring saxophone bean property not as inner bean. So need to declare a separate bean for Saxophone -->
+	<!--<bean id="saxophone" class="com.springinaction.springidol.DIBeanProperty.Saxophone"/>
+    <bean id="kenny" class="com.springinaction.springidol.DIBeanProperty.Instrumentalist">
+		<property name="song" value="Jingle Bells"/>
+		<property name="instrument" ref="saxophone"/>		
+    </bean>-->	
+	
+	<bean id="kenny" class="com.springinaction.springidol.DIBeanProperty.Instrumentalist">
+		<property name="song" value="Jingle Bells"/>
+		<property name="instrument"><!-- declaring saxophone bean property as inner bean. So no need to declare a separate bean for Saxophone as above case-->
+			<bean class="com.springinaction.springidol.DIBeanProperty.Saxophone" />
+		</property>
+    </bean>
+	
+</beans>
